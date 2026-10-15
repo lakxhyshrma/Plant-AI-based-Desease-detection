@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PlantCare AI | Plant Health Assistant</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            🌿 PlantCare <span>AI</span>
+        </div>
+
+        <p class="menu-title">MAIN MENU</p>
+
+        <nav>
+            <button class="nav-btn active" data-page="home">
+                🏠 Home
+            </button>
+
+            <button class="nav-btn" data-page="detect">
+                📸 Detect Disease
+            </button>
+
+            <button class="nav-btn" data-page="results">
+                📊 Results
+            </button>
+
+            <button class="nav-btn" data-page="treatment">
+                💊 Treatment Guide
+            </button>
+
+            <button class="nav-btn" data-page="tips">
+                🌱 Plant Care Tips
+            </button>
+
+            <button class="nav-btn" data-page="history">
+                📜 History
+            </button>
+
+            <button class="nav-btn" data-page="about">
+                ℹ️ About Project
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>🌱 Grow Healthy Plants</p>
+            <small>Your plant care companion</small>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h2 id="page-heading">Home</h2>
+                <p>Welcome to your plant health assistant.</p>
+            </div>
+
+            <div class="status-badge">
+                🌿 PlantCare AI
+            </div>
+        </header>
+
+
+        <!-- HOME PAGE -->
+        <section id="home" class="page active">
+
+            <div class="hero">
+                <div class="hero-text">
+                    <span class="tag">SMART PLANT CARE</span>
+
+                    <h1>Healthy Plants,<br>Better Future 🌱</h1>
+
+                    <p>
+                        Upload a plant leaf image, explore plant
+                        diseases and learn how to care for your plants.
+                    </p>
+
+                    <button class="primary-btn" data-go="detect">
+                        Start Analysis →
+                    </button>
+                </div>
+
+                <div class="hero-emoji">🌿</div>
+            </div>
+
+
+            <h2 class="section-title">Explore Your Dashboard</h2>
+
+            <div class="feature-grid">
+
+                <article class="feature-card">
+                    <div class="card-icon">📸</div>
+                    <h3>Detect Disease</h3>
+                    <p>Upload and preview your plant leaf image.</p>
+
+                    <button class="text-btn" data-go="detect">
+                        Open Feature →
+                    </button>
+                </article>
+
+                <article class="feature-card">
+                    <div class="card-icon">💊</div>
+                    <h3>Treatment Guide</h3>
+                    <p>Explore common plant diseases and care advice.</p>
+
+                    <button class="text-btn" data-go="treatment">
+                        Learn More →
+                    </button>
+                </article>
+
+                <article class="feature-card">
+                    <div class="card-icon">🌱</div>
+                    <h3>Plant Care Tips</h3>
+                    <p>Learn about water, soil and sunlight.</p>
+
+                    <button class="text-btn" data-go="tips">
+                        View Tips →
+                    </button>
+                </article>
+
+                <article class="feature-card">
+                    <div class="card-icon">📜</div>
+                    <h3>Analysis History</h3>
+                    <p>View your previous analysis activities.</p>
+
+                    <button class="text-btn" data-go="history">
+                        View History →
+                    </button>
+                </article>
+
+            </div>
+
+
+            <div class="info-banner">
+                <h3>🌍 Take care of your plants</h3>
+                <p>
+                    Early observation and proper plant care can help
+                    prevent many common plant health problems.
+                </p>
+            </div>
+
+        </section>
+
+
+
+        <!-- DETECT DISEASE PAGE -->
+        <section id="detect" class="page">
+
+            <div class="content-card">
+
+                <h2>🌿 Plant Disease Analysis</h2>
+
+                <p class="muted">
+                    Upload a clear photo of a plant leaf to get started.
+                </p>
+
+                <label for="plantType">Select Plant Type</label>
+
+                <select id="plantType">
+                    <option value="">Choose a plant</option>
+                    <option value="Tomato">Tomato</option>
+                    <option value="Potato">Potato</option>
+                    <option value="Apple">Apple</option>
+                    <option value="Corn">Corn</option>
+                    <option value="Grape">Grape</option>
+                    <option value="Other">Other</option>
+                </select>
+
+
+                <div class="upload-box">
+
+                    <div class="upload-icon">📸</div>
+
+                    <h3>Upload Plant Leaf Image</h3>
+
+                    <p>
+                        Choose a clear image from your computer.
+                    </p>
+
+                    <input
+                        type="file"
+                        id="imageInput"
+                        accept="image/*"
+                    >
+
+                    <label for="imageInput" class="upload-btn">
+                        Choose Image
+                    </label>
+
+                    <img
+                        id="imagePreview"
+                        alt="Selected plant leaf preview"
+                    >
+
+                    <p id="fileName" class="muted"></p>
+
+                    <button id="removeImage" class="secondary-btn" hidden>
+                        Remove Image
+                    </button>
+
+                </div>
+
+
+                <button id="analyzeBtn" class="primary-btn full-btn">
+                    🔍 Analyze Plant
+                </button>
+
+                <div id="analysisMessage" class="message" role="status">
+                    Your uploaded image will appear here.
+                </div>
+
+                <div class="notice">
+                    <strong>Note:</strong> This version does not contain
+                    a trained AI model. It can preview your image, but
+                    it cannot identify a real plant disease yet.
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- RESULTS PAGE -->
+        <section id="results" class="page">
+
+            <div class="content-card">
+
+                <h2>📊 Analysis Results</h2>
+
+                <p class="muted">
+                    View the status of your latest analysis.
+                </p>
+
+                <div id="resultDetails" class="result-box">
+
+                    <div class="empty-icon">🔬</div>
+
+                    <h3>No Analysis Yet</h3>
+
+                    <p>
+                        Upload a leaf image to begin.
+                        A trained AI model is required for actual
+                        disease predictions.
+                    </p>
+
+                    <button class="primary-btn" data-go="detect">
+                        Upload Image
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- TREATMENT GUIDE PAGE -->
+        <section id="treatment" class="page">
+
+            <h2 class="section-title">💊 Plant Treatment Guide</h2>
+
+            <p class="muted page-description">
+                Learn about common plant diseases and general
+                prevention practices.
+            </p>
+
+            <input
+                type="search"
+                id="treatmentSearch"
+                class="search-input"
+                placeholder="Search disease or plant..."
+            >
+
+            <div id="treatmentGrid" class="feature-grid">
+
+                <article class="feature-card treatment-card"
+                    data-search="tomato early blight fungus">
+
+                    <div class="card-icon">🍅</div>
+
+                    <h3>Tomato Early Blight</h3>
+
+                    <p>
+                        A fungal disease that can cause dark spots
+                        on older leaves.
+                    </p>
+
+                    <h4>General Care</h4>
+
+                    <ul>
+                        <li>Water near the soil.</li>
+                        <li>Avoid prolonged leaf wetness.</li>
+                        <li>Remove affected plant material safely.</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="feature-card treatment-card"
+                    data-search="tomato late blight">
+
+                    <div class="card-icon">🍅</div>
+
+                    <h3>Tomato Late Blight</h3>
+
+                    <p>
+                        A serious plant disease that can spread
+                        rapidly in suitable conditions.
+                    </p>
+
+                    <h4>General Care</h4>
+
+                    <ul>
+                        <li>Inspect plants regularly.</li>
+                        <li>Avoid wet foliage where practical.</li>
+                        <li>Seek local agricultural advice promptly.</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="feature-card treatment-card"
+                    data-search="potato early blight">
+
+                    <div class="card-icon">🥔</div>
+
+                    <h3>Potato Early Blight</h3>
+
+                    <p>
+                        May cause brown spots on potato leaves.
+                    </p>
+
+                    <h4>General Care</h4>
+
+                    <ul>
+                        <li>Monitor older leaves.</li>
+                        <li>Maintain appropriate plant nutrition.</li>
+                        <li>Rotate crops where practical.</li>
+                    </ul>
+
+                </article>
+
+
+                <article class="feature-card treatment-card"
+                    data-search="apple scab fruit tree">
+
+                    <div class="card-icon">🍎</div>
+
+                    <h3>Apple Scab</h3>
+
+                    <p>
+                        A fungal disease that may cause dark,
+                        scabby lesions on leaves and fruit.
+                    </p>
+
+                    <h4>General Care</h4>
+
+                    <ul>
+                        <li>Clear fallen infected leaves.</li>
+                        <li>Improve airflow around trees.</li>
+                        <li>Consult local fruit-growing guidance.</li>
+                    </ul>
+
+                </article>
+
+            </div>
+
+            <div class="notice">
+                These are general educational suggestions, not a
+                diagnosis. Confirm the disease before choosing a
+                treatment or pesticide.
+            </div>
+
+        </section>
+
+
+
+        <!-- PLANT CARE TIPS PAGE -->
+        <section id="tips" class="page">
+
+            <h2 class="section-title">🌱 Plant Care Tips</h2>
+
+            <p class="muted page-description">
+                Simple habits for maintaining healthier plants.
+            </p>
+
+            <div class="feature-grid">
+
+                <article class="feature-card">
+                    <div class="card-icon">💧</div>
+                    <h3>Watering</h3>
+
+                    <p>
+                        Check soil moisture before watering.
+                        Avoid keeping soil constantly waterlogged.
+                    </p>
+                </article>
+
+
+                <article class="feature-card">
+                    <div class="card-icon">☀️</div>
+                    <h3>Sunlight</h3>
+
+                    <p>
+                        Learn the light requirements of each plant.
+                        Different species need different amounts.
+                    </p>
+                </article>
+
+
+                <article class="feature-card">
+                    <div class="card-icon">🌱</div>
+                    <h3>Healthy Soil</h3>
+
+                    <p>
+                        Use suitable soil with good drainage
+                        and appropriate nutrients.
+                    </p>
+                </article>
+
+
+                <article class="feature-card">
+                    <div class="card-icon">🔍</div>
+                    <h3>Regular Inspection</h3>
+
+                    <p>
+                        Look for unusual spots, discoloration,
+                        wilting and insect activity.
+                    </p>
+                </article>
+
+
+                <article class="feature-card">
+                    <div class="card-icon">🪴</div>
+                    <h3>Air Circulation</h3>
+
+                    <p>
+                        Allow sufficient space between plants
+                        to improve airflow.
+                    </p>
+                </article>
+
+
+                <article class="feature-card">
+                    <div class="card-icon">🧹</div>
+                    <h3>Garden Hygiene</h3>
+
+                    <p>
+                        Clean gardening tools and remove
+                        fallen plant debris when appropriate.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- HISTORY PAGE -->
+        <section id="history" class="page">
+
+            <div class="history-heading">
+
+                <div>
+                    <h2 class="section-title">📜 Analysis History</h2>
+
+                    <p class="muted">
+                        Your activities are stored in this browser.
+                    </p>
+                </div>
+
+                <button id="clearHistory" class="secondary-btn">
+                    Clear History
+                </button>
+
+            </div>
+
+            <div class="content-card">
+                <div id="historyList">
+                    <p class="muted">No history available yet.</p>
+                </div>
+            </div>
+
+        </section>
+
+
+
+        <!-- ABOUT PAGE -->
+        <section id="about" class="page">
+
+            <div class="content-card">
+
+                <div class="about-icon">🌿</div>
+
+                <h2>About PlantCare AI</h2>
+
+                <p>
+                    PlantCare AI is a student project concept designed
+                    to help users explore plant health, learn about
+                    common diseases and understand plant care.
+                </p>
+
+                <h3 class="subheading">Project Objectives</h3>
+
+                <ul class="about-list">
+                    <li>Provide an easy-to-use plant image upload interface.</li>
+                    <li>Display analysis results when a model is connected.</li>
+                    <li>Present educational disease and care information.</li>
+                    <li>Maintain a local history of analysis activities.</li>
+                </ul>
+
+                <h3 class="subheading">Technologies Used</h3>
+
+                <div class="tech-list">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                    <span>Machine Learning — planned</span>
+                    <span>Python — planned</span>
+                </div>
+
+                <div class="notice">
+                    <strong>Development status:</strong> The current
+                    version is a frontend demonstration. Real disease
+                    classification requires a trained model and
+                    integration with the application.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer class="main-footer">
+            <p>🌿 PlantCare AI | Student Project</p>
+        </footer>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
